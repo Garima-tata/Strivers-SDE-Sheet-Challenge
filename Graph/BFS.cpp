@@ -1,50 +1,65 @@
-#include <bits/stdc++.h> 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
 using namespace std;
 
-vector<int> bfs(int src, int vertex, vector<int> adj[]) {
-    vector<int> ans;
-    queue<int> q;
-    vector<bool> vis(vertex, false);
-    
-    q.push(src);
-    vis[src] = true;
-    
-    while (!q.empty()) {
-        int node = q.front();
-        q.pop();
-        ans.push_back(node);
-        
-        for (int i : adj[node]) {
-            if (!vis[i]) {
-                vis[i] = true;
-                q.push(i);
+void bfsOfGraph(int V, vector<vector<int>>& adj, vector<int>& ans) {
+    vector<bool> vis(V, false);
+    queue<int> Q;
+
+    for (int i = 0; i < V; i++) {
+        if (vis[i] == false) {
+            vis[i] = true;
+            Q.push(i);
+            while (!Q.empty()) {
+                int temp = Q.front();
+                Q.pop();
+                ans.push_back(temp);
+                for (auto neighbor : adj[temp]) {
+                    if (!vis[neighbor]) {
+                        vis[neighbor] = true;
+                        Q.push(neighbor);
+                    }
+                }
             }
         }
     }
-    
-    return ans;
 }
 
-vector<int> BFS(int vertex, vector<pair<int, int>> edges) {
-    vector<int> adj[vertex];
-    
+vector<int> BFS(int vertex, vector<pair<int, int>>& edges) {
+    vector<vector<int>> adj(vertex);
+
     for (auto edge : edges) {
         int u = edge.first;
         int v = edge.second;
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
-    
+
     vector<int> ans;
-    vector<bool> vis(vertex, false);
-    for (int i = 0; i < vertex; i++) {
-        if (!vis[i]) {
-            ans.push_back(i);
-            vis[i] = true;
-            bfs(i, vertex, adj);
-        }
-    }
-    
+    bfsOfGraph(vertex, adj, ans);
+    // sort(ans.begin(), ans.end()); // Sort the ans vector
     return ans;
 }
 
+int main() {
+    int vertex, edges;
+    cin >> vertex >> edges;
+    
+    vector<pair<int, int>> edgeList;
+    for (int i = 0; i < edges; i++) {
+        int u, v;
+        cin >> u >> v;
+        edgeList.push_back({u, v});
+    }
+
+    vector<int> result = BFS(vertex, edgeList);
+
+    for (int node : result) {
+        cout << node << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
