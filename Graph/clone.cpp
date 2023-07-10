@@ -1,8 +1,5 @@
 #include <bits/stdc++.h> 
-/***************************************************************************
-
-	Class for graph node is as follows:
-
+using namespace std;
 	class graphNode
 	{
 		public:
@@ -26,8 +23,6 @@
         	this->neighbours = neighbours;
     	}
 	};
-
-******************************************************************************/
 unordered_map<graphNode*, graphNode*>mp;
 
 void dfs(graphNode* node){
