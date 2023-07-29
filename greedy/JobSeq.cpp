@@ -1,4 +1,5 @@
 #include <bits/stdc++.h> 
+using namespace std; 
 
 int jobScheduling(vector<vector<int>> &jobs)
 
