@@ -12,6 +12,7 @@ vector<long long int>layer(int n){
   }
   return layers;
 }
+
 vector<vector<long long int>> printPascal(int n) 
 {
     vector<vector<long long int>>answer;
@@ -19,16 +20,4 @@ vector<vector<long long int>> printPascal(int n)
        answer.push_back(layer(i));
     }
     return answer;
-}
-
-
-int main(){
-    vector<vector<long long int>> a = printPascal(2);
-    int n = a.size();
-    for(int i=0;i<n;i++){
-        for(int j=0;j<a[i].size();j++){
-            cout<<a[i][j]<<" ";
-        }
-        cout<<endl;
-    }
 }

@@ -20,6 +20,7 @@ void setZeros(vector<vector<int>> &matrix)
 			matrix[i][j] = 0;
 		}
 	}
+	
 	for(auto i:col){
 		for(int j=0;j<n;j++){
 			matrix[j][i] = 0;

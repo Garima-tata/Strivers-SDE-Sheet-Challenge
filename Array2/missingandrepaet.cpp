@@ -16,7 +16,6 @@ pair<int,int> missingAndRepeating(vector<int> &arr, int n)
 			twice = i+1;
 		}
 	}
-	
 	return {zero, twice};
 }
 

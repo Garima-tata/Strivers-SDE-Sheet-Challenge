@@ -11,6 +11,8 @@ void rotateMatrix(vector<vector<int>>& mat, int row, int col) {
     int left = 0;
     int right = col - 1;
     int prev, curr;
+
+    
     while (top < bottom && left < right) {
         prev = mat[top + 1][left];
 

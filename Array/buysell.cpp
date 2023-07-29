@@ -1,13 +1,14 @@
 #include <bits/stdc++.h> 
 using namespace std;
 
-int maximumProfit(vector<int> &prices){
+// arr = [2, 3, 4, 5, 1, 2, 3]
 
+int maximumProfit(vector<int> &prices){
     int profit = 0;
-    int sell = INT_MAX;
+    int buy = INT_MAX;
     for(int i = 0 ; i<prices.size();i++){
-        sell = min(sell, prices[i]);
-        profit = max(profit, prices[i]-sell);
+        buy = min(buy, prices[i]);
+        profit = max(profit, prices[i]-buy);
     }
     return profit;
 }
