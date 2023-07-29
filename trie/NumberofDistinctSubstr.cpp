@@ -1,4 +1,5 @@
 #include <bits/stdc++.h> 
+using namespace std;
 class Node{
         public:
     Node* links[26];
